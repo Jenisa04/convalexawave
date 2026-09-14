@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+import CalendlyBooking from "@/components/CalendlyBooking";
 
 const services = [
   {
@@ -264,27 +265,18 @@ export default function Home() {
             we&apos;ll reply within one business day.
           </p>
 
-          <div className="mt-12 grid gap-16 md:grid-cols-2 md:gap-12">
-            <div>
-              <a
-                href="#"
-                className="inline-block rounded-full bg-teal px-7 py-3.5 text-warm-white transition-opacity hover:opacity-90"
-              >
-                Book a Free 15-Min Call
-              </a>
+          <div className="mt-12">
+            <CalendlyBooking />
+          </div>
 
-              <div className="mt-10 border-t border-parchment pt-8">
-                <p className="text-sm text-muted">Email</p>
-                <a
-                  href="mailto:hello@convalexawave.com"
-                  className="mt-1 block text-navy hover:text-teal"
-                >
-                  hello@convalexawave.com
-                </a>
-              </div>
+          <div className="mt-16 max-w-xl border-t border-parchment pt-12">
+            <h3 className="font-serif text-xl text-navy">Prefer to write instead?</h3>
+            <p className="mt-2 text-muted">
+              Send a message and we&apos;ll reply within one business day.
+            </p>
+            <div className="mt-8">
+              <ContactForm />
             </div>
-
-            <ContactForm />
           </div>
         </div>
       </section>

@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 
-export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xbdblneo";
 
-  if (submitted) {
+export default function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  if (status === "success") {
     return (
       <div className="border-t border-parchment pt-8 md:border-t-0 md:pt-0">
         <p className="font-serif text-2xl text-navy">Thank you.</p>
@@ -18,9 +20,28 @@ export default function ContactForm() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setSubmitted(true);
+        setStatus("submitting");
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
+
+          if (response.ok) {
+            setStatus("success");
+          } else {
+            setStatus("error");
+          }
+        } catch {
+          setStatus("error");
+        }
       }}
       className="flex flex-col gap-6"
     >
@@ -63,11 +84,19 @@ export default function ContactForm() {
         />
       </div>
 
+      {status === "error" && (
+        <p className="text-sm text-red-600">
+          Something went wrong sending your message. Please try again, or reach
+          out directly.
+        </p>
+      )}
+
       <button
         type="submit"
-        className="mt-2 w-fit rounded-full bg-teal px-7 py-3.5 text-warm-white transition-opacity hover:opacity-90"
+        disabled={status === "submitting"}
+        className="mt-2 w-fit rounded-full bg-teal px-7 py-3.5 text-warm-white transition-opacity hover:opacity-90 disabled:opacity-60"
       >
-        Send Message
+        {status === "submitting" ? "Sending…" : "Send Message"}
       </button>
     </form>
   );

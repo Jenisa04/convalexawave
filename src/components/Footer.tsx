@@ -30,12 +30,6 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
-
-        <div className="text-sm text-muted">
-          <a href="mailto:hello@convalexawave.com" className="hover:text-teal">
-            hello@convalexawave.com
-          </a>
-        </div>
       </div>
 
       <div className="border-t border-parchment px-6 py-6 text-center text-sm text-muted md:px-10">
