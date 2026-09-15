@@ -30,6 +30,17 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
+
+        <div className="text-sm text-muted">
+          <a
+            href="https://www.linkedin.com/in/jenisa-sheth/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-teal"
+          >
+            LinkedIn
+          </a>
+        </div>
       </div>
 
       <div className="border-t border-parchment px-6 py-6 text-center text-sm text-muted md:px-10">

@@ -120,7 +120,7 @@ export default function Home() {
               </Link>
             </div>
             <p className="mt-6 text-sm text-muted">
-              Fixed-price builds · No lock-in · Launched in weeks, not months
+              5+ Next.js websites shipped · Fixed-price builds · No lock-in
             </p>
           </div>
 
@@ -264,6 +264,23 @@ export default function Home() {
             conversation about where things stand. Or send a message and
             we&apos;ll reply within one business day.
           </p>
+
+          <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2">
+            <a
+              href="mailto:hello@convalexawave.com"
+              className="text-navy hover:text-teal"
+            >
+              Email: hello@convalexawave.com
+            </a>
+            <a
+              href="https://wa.me/919820103031"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-navy hover:text-teal"
+            >
+              WhatsApp: +91 98201 03031
+            </a>
+          </div>
 
           <div className="mt-12">
             <CalendlyBooking />
