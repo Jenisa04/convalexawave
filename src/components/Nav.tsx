@@ -1,74 +1,20 @@
 "use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import Logo from "@/components/Logo";
+import { useEffect, useState } from "react";
 
-const links = [
-  { href: "#what-we-do", label: "What We Do" },
-  { href: "#how-we-work", label: "How We Work" },
-  { href: "#work", label: "Work" },
-  { href: "#contact", label: "Contact" },
-];
+const links = [{ href: "#work", label: "Selected work" }, { href: "#services", label: "What we do" }, { href: "#approach", label: "Approach" }];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-
-  return (
-    <header className="sticky top-0 z-50 border-b border-parchment bg-warm-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
-        <Logo />
-
-        <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-navy/80 transition-colors hover:text-teal"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            href="#contact"
-            className="rounded-full bg-teal px-5 py-2.5 text-sm text-warm-white transition-opacity hover:opacity-90"
-          >
-            Book a Call
-          </Link>
-        </nav>
-
-        <button
-          className="flex flex-col gap-1.5 md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          <span className="h-px w-6 bg-navy" />
-          <span className="h-px w-6 bg-navy" />
-          <span className="h-px w-6 bg-navy" />
-        </button>
-      </div>
-
-      {open && (
-        <nav className="flex flex-col gap-1 border-t border-parchment px-6 pb-6 md:hidden">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="py-3 text-sm text-navy/80"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            href="#contact"
-            className="mt-2 w-fit rounded-full bg-teal px-5 py-2.5 text-sm text-warm-white"
-            onClick={() => setOpen(false)}
-          >
-            Book a Call
-          </Link>
-        </nav>
-      )}
-    </header>
-  );
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => { const update = () => setScrolled(scrollY > 30); update(); addEventListener("scroll", update, { passive: true }); return () => removeEventListener("scroll", update); }, []);
+  useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [open]);
+  return <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+    <Link className="brand" href="#top" aria-label="Convalexa Wave home">CONVALEXA<span>WAVE</span></Link>
+    <button className="menu-toggle" aria-expanded={open} aria-controls="nav" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(value => !value)}><span /><span /></button>
+    <nav id="nav" className={open ? "open" : ""} aria-label="Primary navigation">
+      {links.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}</Link>)}
+      <Link href="#contact" className="nav-contact" onClick={() => setOpen(false)}>Let&apos;s talk <span>↗</span></Link>
+    </nav>
+  </header>;
 }

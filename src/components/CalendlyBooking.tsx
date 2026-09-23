@@ -7,15 +7,25 @@ export default function CalendlyBooking() {
   const [show, setShow] = useState(false);
 
   if (show) {
-    return <CalendlyEmbed />;
+    return (
+      <div className="calendly-open">
+        <button type="button" onClick={() => setShow(false)} className="calendly-close">
+          Close ✕
+        </button>
+        <div className="calendly-frame">
+          <CalendlyEmbed />
+        </div>
+      </div>
+    );
   }
 
   return (
     <button
+      type="button"
       onClick={() => setShow(true)}
-      className="inline-block rounded-full bg-teal px-7 py-3.5 text-warm-white transition-opacity hover:opacity-90"
+      className="pill pill-solid"
     >
-      Book a Free 15-Min Call
+      Book a Free 15-Min Call <span>↗</span>
     </button>
   );
 }

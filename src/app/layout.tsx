@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, DM_Sans } from "next/font/google";
-import Script from "next/script";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"],
@@ -18,25 +17,21 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Convalexa Wave — Digital presence that works while you sleep",
+  title: "Convalexa Wave — Websites with presence. Systems with purpose.",
   description:
-    "Websites, DM automation, and AI chat for clinics and creative studios — built to turn visitors into booked appointments.",
+    "A design and automation studio building distinctive websites, AI chatbots, Instagram automations, and connected workflows for businesses worldwide.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${dmSerif.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${playfair.variable} ${dmSans.variable}`}
     >
-      <body className="min-h-full flex flex-col bg-warm-white text-navy">
+      <body>
         <Nav />
-        <main className="flex-1">{children}</main>
+        <main id="top">{children}</main>
         <Footer />
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

@@ -1,302 +1,60 @@
+import Image from "next/image";
 import Link from "next/link";
-import ContactForm from "@/components/ContactForm";
+import HomeMotion from "@/components/HomeMotion";
+import Script from "next/script";
 import CalendlyBooking from "@/components/CalendlyBooking";
+import ContactForm from "@/components/ContactForm";
+
+const projects = [
+  { n: "01", sector: "Healthcare", title: "SVKM Physiotherapy Clinic", description: "A welcoming introduction to care through every stage of life. Services, treatment facilities, and ways to get in touch come together in a clear, patient-focused website.", url: "https://www.svkmphysioclinic.com/", image: "/assets/cw-physio-project.jpg", alt: "SVKM Physiotherapy Clinic homepage", label: "SVKM Physiotherapy Clinic", cls: "preview-physio" },
+  { n: "02", sector: "Education", title: "Smt. Alka Desai College of Nursing", description: "Helping prospective students and families explore courses, campus life, and admissions through one coherent institutional website.", url: "https://www.svkmalkadesainursing.com/", image: "/assets/cw-nursing-project.jpg", alt: "Smt. Alka Desai College of Nursing homepage", label: "Education & healthcare", cls: "preview-nursing" },
+  { n: "03", sector: "Personal brand", title: "Bhupeshbhai Hai Na", description: "A personal story told through people, purpose, and community. An expressive website with English, Hindi, and Marathi language options.", url: "https://www.bhupeshbhaihaina.com/", image: "/assets/cw-personal-project.jpg", alt: "Bhupeshbhai Hai Na homepage", label: "Personal identity", cls: "preview-personal" },
+];
 
 const services = [
-  {
-    number: "01",
-    name: "Websites",
-    tag: "Door opener, trust builder",
-    description:
-      "A clean, fast website that makes a new client trust you before they've even called. The foundation everything else is built on.",
-  },
-  {
-    number: "02",
-    name: "Instagram DM Automation",
-    tag: "Upsell, saves time",
-    description:
-      "Every DM and comment gets an instant, on-brand reply — turning casual interest into booked appointments without anyone on your team lifting a finger.",
-  },
-  {
-    number: "03",
-    name: "AI Chatbot",
-    tag: "24/7 front desk",
-    description:
-      "A chatbot trained on your business that answers questions, qualifies leads, and books calls at any hour — without adding to your staffing.",
-  },
-  {
-    number: "04",
-    name: "Workflow Automation",
-    tag: "For growing teams",
-    description:
-      "We connect your tools and automate the repetitive work between them — quoting, onboarding, reporting — using n8n and Make.",
-  },
+  ["01 / Design + development", "Web design & development", "Websites that express your business clearly and give people a reason to explore. From a focused portfolio to a multi-page platform, we handle the design and the build.", "Strategy · UX/UI · Development · CMS"],
+  ["02 / Social conversations", "Instagram DM automation", "Turn comments and DMs into useful conversations. We build response flows that answer common questions, capture interest, and guide people toward an enquiry or booking.", "DM flows · Comment responses · Lead capture"],
+  ["03 / AI experiences", "AI chatbots", "Help visitors find answers using your business information. We design chat experiences that explain your services, collect enquiries, and hand off to a person when needed.", "Business knowledge · Enquiries · Human handoff"],
+  ["04 / Connected operations", "Workflow automation", "Connect the tools you use and simplify repetitive steps between them. We build workflows around enquiries, onboarding, follow-ups, and reporting.", "Integrations · Onboarding · Follow-up · Reporting"],
 ];
 
-const steps = [
-  {
-    number: "01",
-    title: "Discovery",
-    description: "We learn your business, your clients, and what success looks like for you.",
-  },
-  {
-    number: "02",
-    title: "Design & Build",
-    description: "We create your website, automation, or chatbot, tailored to how you work.",
-  },
-  {
-    number: "03",
-    title: "Launch",
-    description: "We go live together, checking every detail before your clients see it.",
-  },
-  {
-    number: "04",
-    title: "Ongoing Support",
-    description: "We stay with you, refining and supporting your digital presence over time.",
-  },
-];
+function Credit() { return <p className="collaboration-credit">In collaboration with <a href="https://madncrazy.works/" target="_blank" rel="noopener noreferrer">MadNCrazy Medianomics<span className="sr-only"> (opens in a new tab)</span></a></p>; }
 
-const principles = [
-  {
-    number: "01",
-    title: "Calm over clever",
-    description:
-      "We'd rather build something dependable than something that wins design awards.",
-  },
-  {
-    number: "02",
-    title: "Built to disappear",
-    description:
-      "Good automation is invisible — clients shouldn't be able to tell it's not a person.",
-  },
-  {
-    number: "03",
-    title: "Yours, not ours",
-    description:
-      "Everything is handed over cleanly — your domain, your accounts, your data. No lock-in.",
-  },
-];
-
-const shifts = [
-  {
-    from: "Hours",
-    to: "Seconds",
-    description: "Between a DM landing and a reply going out.",
-  },
-  {
-    from: "Phone tag",
-    to: "Self-serve",
-    description: "New clients booking a time without calling first.",
-  },
-  {
-    from: "Repeating",
-    to: "Resolved",
-    description: "The same five questions answered without your team.",
-  },
-];
+function Preview({ project }: { project: (typeof projects)[number] }) {
+  return <a className={`project-preview ${project.cls}`} href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} website (opens in a new tab)`}>
+    <span className="preview-label">{project.label}<span aria-hidden="true">↗</span></span>
+    <Image src={project.image} alt={project.alt} width={1348} height={926} sizes="(max-width: 700px) 100vw, 60vw" />
+    <span className="preview-cta">Explore live website <span aria-hidden="true">↗</span></span>
+  </a>;
+}
 
 export default function Home() {
-  return (
-    <>
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-        <div className="grid items-center gap-16 md:grid-cols-2 md:gap-12">
-          <div className="animate-fade-in">
-            <h1 className="font-serif text-4xl leading-tight text-navy sm:text-5xl md:text-5xl">
-              Digital presence that works while you sleep.
-            </h1>
-            <p className="mt-6 max-w-lg text-xl leading-relaxed text-muted">
-              A website that converts, DMs that answer themselves, and AI chat
-              that books appointments — the digital groundwork for clinics and
-              creative studios who&apos;d rather focus on their clients than
-              their inbox.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-              <Link
-                href="#contact"
-                className="inline-block rounded-full bg-teal px-7 py-3.5 text-warm-white transition-opacity hover:opacity-90"
-              >
-                Book a Free Call
-              </Link>
-            </div>
-            <p className="mt-6 text-sm text-muted">
-              5+ Next.js websites shipped · Fixed-price builds · No lock-in
-            </p>
-          </div>
+  const [featured, ...secondary] = projects;
+  return <>
+    <HomeMotion />
+    <a className="skip-link" href="#main-content">Skip to content</a><div className="progress" aria-hidden="true"><span /></div><div id="main-content" tabIndex={-1} />
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero-media" aria-hidden="true"><Image src="/assets/hero-refined.png" alt="" fill priority sizes="100vw" /></div><div className="hero-overlay" aria-hidden="true" />
+      <div className="hero-content"><p className="eyebrow"><span className="line" /> Design & automation studio</p><h1 id="hero-title"><span className="hero-line">Websites with presence.</span><span className="hero-line"><em>Systems with purpose.</em></span></h1><div className="hero-bottom"><p>We build distinctive websites, AI chatbots, and automations that help ambitious businesses earn trust, respond faster, and work better.</p><div className="hero-actions"><Link className="pill pill-solid" href="#work">Explore our work <span>↘</span></Link><Link className="inline-link" href="#contact">Have a project in mind? <span>↗</span></Link></div></div></div>
+      <div className="hero-foot"><Link href="#work">Selected work to explore <span>↓</span></Link><span>Design · Development · Automation</span></div>
+    </section>
 
-          <div className="flex justify-center md:justify-end">
-            <svg
-              viewBox="0 0 400 320"
-              className="h-56 w-56 md:h-72 md:w-72"
-              fill="none"
-            >
-              <path
-                d="M10 220 C 70 160, 110 280, 170 220 C 230 160, 270 280, 330 220 C 360 190, 380 190, 390 200"
-                stroke="#2A7F7F"
-                strokeWidth="1.5"
-                opacity="0.75"
-              />
-              <path
-                d="M10 160 C 70 110, 110 210, 170 160 C 230 110, 270 210, 330 160 C 360 135, 380 135, 390 145"
-                stroke="#1C2B3A"
-                strokeWidth="1"
-                opacity="0.3"
-              />
-              <path
-                d="M10 260 C 70 230, 110 290, 170 260 C 230 230, 270 290, 330 260 C 360 245, 380 245, 390 250"
-                stroke="#7A8A96"
-                strokeWidth="1"
-                opacity="0.4"
-              />
-              <circle cx="170" cy="220" r="4.5" fill="#2A7F7F" />
-              <circle cx="330" cy="220" r="4.5" fill="#1C2B3A" opacity="0.6" />
-            </svg>
-          </div>
-        </div>
-      </section>
+    <section className="intro section-pad"><div className="intro-top reveal"><span className="section-label">Design, connected to your business</span><span className="asterisk">✳</span></div><div className="intro-grid reveal"><h2>Every impression.<br /><em>Every next step.</em></h2><div><p>A compelling website creates interest. Clear answers, timely replies, and easy next steps help turn that interest into a conversation.</p><p>We bring those moments together through considered design and practical technology. Each part can stand on its own or connect with the tools you already use.</p></div></div><div className="credibility reveal"><div><strong>Design through delivery</strong><span>Strategy, design, and development</span></div><div><strong>Built around your business</strong><span>Websites, AI, and connected workflows</span></div><div><strong>Direct collaboration</strong><span>Work with the founder behind the studio</span></div></div></section>
 
-      {/* What We Do */}
-      <section id="what-we-do" className="scroll-mt-24 border-t border-parchment bg-parchment/40">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <span className="text-base text-teal">01 — What we do</span>
-          <h2 className="mt-3 font-serif text-3xl text-navy md:text-4xl">
-            Four systems, one goal: never lose a client to a slow reply.
-          </h2>
+    <section className="work" id="work"><div className="work-heading section-pad reveal"><div><span className="section-label">01 / Selected work</span><h2>Considered work.<br /><em>Out in the world.</em></h2></div><p>Explore selected projects across healthcare, education, and personal identity—each shaped around a distinct audience and purpose.</p></div>
+      <article className="work-feature reveal"><Preview project={featured} /><div className="work-info"><div className="work-meta"><span>{featured.n} / {featured.sector}</span><span className="status live">Live website</span></div><h3>{featured.title}</h3><p>{featured.description}</p><Credit /><a className="inline-link project-link" href={featured.url} target="_blank" rel="noopener noreferrer">Visit the live website <span>↗</span></a></div></article>
+      <div className="work-pair">{secondary.map(project => <article className="work-card reveal" key={project.title}><Preview project={project} /><div className="work-meta"><span>{project.n} / {project.sector}</span><span className="status live">Live website</span></div><h3>{project.title}</h3><p>{project.description}</p><Credit /><a className="inline-link project-link" href={project.url} target="_blank" rel="noopener noreferrer">Visit the live website <span>↗</span></a></article>)}</div>
+      <div className="work-next section-pad reveal"><p>Your business has its own story.<br /><strong>Let’s give it the right presence.</strong></p><Link className="pill pill-outline" href="#contact">Discuss your website <span>↗</span></Link></div>
+    </section>
 
-          <div className="mt-14 grid gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14">
-            {services.map((service) => (
-              <div key={service.number} className="grid grid-cols-[56px_1fr] gap-4">
-                <span className="font-serif text-2xl text-teal">{service.number}</span>
-                <div>
-                  <h3 className="font-serif text-2xl text-navy">{service.name}</h3>
-                  <p className="mt-1 text-sm text-teal">{service.tag}</p>
-                  <p className="mt-3 text-muted">{service.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section className="audience section-pad" id="audience"><div className="audience-head reveal"><span className="section-label">02 / What we help you do</span><h2>A stronger presence.<br /><em>A smoother business.</em></h2><p>Whether someone is discovering your business or your team is handling the next enquiry, every step deserves the same care.</p></div><div className="audience-list"><article className="audience-row reveal"><span>01</span><h3>Build confidence.</h3><p>Show what makes your business worth choosing, through distinctive design, clear information, and an easy path to get in touch.</p></article><article className="audience-row reveal"><span>02</span><h3>Start conversations.</h3><p>Help interested visitors take the next step with useful website answers and timely Instagram responses.</p></article><article className="audience-row reveal"><span>03</span><h3>Keep work moving.</h3><p>Connect enquiries, follow-ups, and everyday tasks so your team can spend more time on the work that needs them.</p></article></div><p className="audience-end reveal">Your goals shape the brief. Your industry adds the context.</p></section>
 
-      {/* How We Work */}
-      <section id="how-we-work" className="scroll-mt-24 mx-auto max-w-4xl px-6 py-20 md:px-10 md:py-28">
-        <span className="text-base text-teal">02 — How we work</span>
-        <h2 className="mt-3 font-serif text-3xl text-navy md:text-4xl">
-          No jargon, no fifty-page proposal.
-        </h2>
-        <p className="mt-4 max-w-xl text-lg text-muted">
-          Four steps, each one finished before the next begins, so you always
-          know exactly where things stand.
-        </p>
+    <section className="services section-pad" id="services"><div className="services-head reveal"><span className="section-label">03 / What we do</span><h2>What we can<br /><em>build for you.</em></h2><p>Four services, available individually or brought together around one goal.</p></div><div className="service-grid">{services.map(s => <article className="service reveal" key={s[1]}><span>{s[0]}</span><h3>{s[1]}</h3><p>{s[2]}</p><b>{s[3]}</b></article>)}</div></section>
 
-        <div className="mt-14 flex flex-col gap-12">
-          {steps.map((step) => (
-            <div key={step.number} className="flex gap-6 border-t border-parchment pt-10 md:gap-10">
-              <span className="font-serif text-3xl text-teal">{step.number}</span>
-              <div>
-                <h3 className="font-serif text-2xl text-navy md:text-3xl">{step.title}</h3>
-                <p className="mt-2 text-muted">{step.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    <section className="approach section-pad" id="approach"><div className="approach-left reveal"><span className="section-label">04 / Working together</span><h2>Start with what<br /><em>matters most.</em></h2></div><div className="approach-right reveal"><p>A new website. A better way to handle enquiries. One process that takes too much time. We shape a focused engagement around your priorities, budget, and existing tools.</p><div className="approach-points"><div><span>01</span><strong>Start with a conversation.</strong><p>Tell us what you want to improve and what is getting in the way.</p></div><div><span>02</span><strong>Know the plan and the price.</strong><p>Agree on the scope, deliverables, timeline, and price before the work begins.</p></div><div><span>03</span><strong>Stay close to the work.</strong><p>Work directly with the founder, with clear review points from first ideas through launch.</p></div></div><Link className="inline-link dark-link" href="#contact">Let&apos;s talk about your project <span>↗</span></Link></div></section>
 
-      {/* Why Convalexa Wave */}
-      <section className="border-t border-parchment bg-parchment/40">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-          <span className="text-base text-teal">03 — Why Convalexa Wave</span>
-          <h2 className="mt-3 font-serif text-3xl text-navy md:text-4xl">
-            How we think about your business
-          </h2>
+    <section className="founder section-pad reveal"><div className="founder-left"><span className="section-label">05 / Founder-led by design</span><div className="founder-signature" aria-hidden="true">C<span>W</span></div></div><div><h2>Creative judgement.<br />Technical depth.<br /><em>Direct accountability.</em></h2><p>Founded by a UC Davis Applied Mathematics & Computer Science graduate with professional experience in technology, Convalexa Wave brings engineering discipline to creative work. You collaborate directly with the founder shaping your project—from the first conversation to the final details.</p></div></section>
 
-          <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
-            {principles.map((principle) => (
-              <div key={principle.number}>
-                <span className="font-serif text-2xl text-teal">{principle.number}</span>
-                <h3 className="mt-3 font-serif text-2xl text-navy">{principle.title}</h3>
-                <p className="mt-3 text-muted">{principle.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Work */}
-      <section id="work" className="scroll-mt-24 mx-auto max-w-4xl px-6 py-20 md:px-10 md:py-28">
-        <span className="text-base text-teal">04 — Selected work</span>
-        <h2 className="mt-3 font-serif text-3xl text-navy md:text-4xl">
-          What tends to change
-        </h2>
-        <p className="mt-4 max-w-xl text-lg text-muted">
-          We don&apos;t publish a gallery — our clients&apos; work speaks for
-          them, privately. Book a call and we&apos;ll walk you through exactly
-          what we&apos;ve built. In the meantime, here&apos;s what shifts once
-          the groundwork is in place.
-        </p>
-
-        <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
-          {shifts.map((shift) => (
-            <div key={shift.description}>
-              <p className="font-serif text-2xl text-navy">
-                {shift.from} <span className="text-teal">→</span> {shift.to}
-              </p>
-              <p className="mt-3 text-muted">{shift.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <Link
-          href="#contact"
-          className="mt-14 inline-block rounded-full bg-teal px-7 py-3.5 text-warm-white transition-opacity hover:opacity-90"
-        >
-          Book a Free Call
-        </Link>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="scroll-mt-24 border-t border-parchment bg-parchment/40">
-        <div className="mx-auto max-w-4xl px-6 py-20 md:px-10 md:py-28">
-          <span className="text-base text-teal">05 — Contact</span>
-          <h2 className="mt-3 font-serif text-3xl text-navy md:text-4xl">Let&apos;s talk</h2>
-          <p className="mt-4 max-w-xl text-lg text-muted">
-            The fastest way to start is a quick call — no pitch, just a
-            conversation about where things stand. Or send a message and
-            we&apos;ll reply within one business day.
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2">
-            <a
-              href="mailto:hello@convalexawave.com"
-              className="text-navy hover:text-teal"
-            >
-              Email: hello@convalexawave.com
-            </a>
-            <a
-              href="https://wa.me/919820103031"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-navy hover:text-teal"
-            >
-              WhatsApp: +91 98201 03031
-            </a>
-          </div>
-
-          <div className="mt-12">
-            <CalendlyBooking />
-          </div>
-
-          <div className="mt-16 max-w-xl border-t border-parchment pt-12">
-            <h3 className="font-serif text-xl text-navy">Prefer to write instead?</h3>
-            <p className="mt-2 text-muted">
-              Send a message and we&apos;ll reply within one business day.
-            </p>
-            <div className="mt-8">
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+    <section className="contact section-pad" id="contact"><div className="contact-glow" aria-hidden="true" /><div className="contact-inner reveal"><span className="section-label">The next step</span><h2>What would you like<br />to <em>make better?</em></h2><p>Tell us about your business, what you want to improve, and your ideal timeline. We’ll discuss the fit, then shape a clear scope and quote.</p></div><div className="contact-booking reveal"><h3>Choose a time that works for you.</h3><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" /><Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" /><CalendlyBooking /></div><div className="contact-enquiry reveal"><h3>Prefer to write? Tell us about your project.</h3><p>Send a message and we’ll reply within one business day.</p><div className="contact-form-wrap"><ContactForm /></div></div></section>
+  </>;
 }
