@@ -17,6 +17,24 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.convalexawave.com"),
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Convalexa Wave",
+    title: "Convalexa Wave — Websites with presence. Systems with purpose.",
+    description:
+      "A design and automation studio building distinctive websites, AI chatbots, Instagram automations, and connected workflows for businesses worldwide.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Convalexa Wave — Websites with presence. Systems with purpose.",
+    description:
+      "Distinctive websites, AI chatbots and connected workflows for ambitious businesses.",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -38,6 +56,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${playfair.variable} ${dmSans.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Convalexa Wave",
+              url: "https://www.convalexawave.com",
+              description:
+                "Design and automation studio building websites, AI chatbots and connected workflows.",
+              email: "hello@convalexawave.com",
+            }),
+          }}
+        />
         <Nav />
         <main id="top">{children}</main>
         <Footer />

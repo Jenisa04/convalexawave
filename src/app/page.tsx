@@ -34,7 +34,7 @@ export default function Home() {
     <HomeMotion />
     <a className="skip-link" href="#main-content">Skip to content</a><div className="progress" aria-hidden="true"><span /></div><div id="main-content" tabIndex={-1} />
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-media" aria-hidden="true"><Image src="/assets/hero-refined.png" alt="" fill priority sizes="100vw" /></div><div className="hero-overlay" aria-hidden="true" />
+      <div className="hero-media" aria-hidden="true"><Image src="/assets/hero-refined.png" alt="A figure standing in a vast, softly lit architectural hall" fill priority sizes="100vw" /></div><div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content"><p className="eyebrow"><span className="line" /> Design & automation studio</p><h1 id="hero-title"><span className="hero-line">Websites with presence.</span><span className="hero-line"><em>Systems with purpose.</em></span></h1><div className="hero-bottom"><p>We build distinctive websites, AI chatbots, and automations that help ambitious businesses earn trust, respond faster, and work better.</p><div className="hero-actions"><Link className="pill pill-solid" href="#work">Explore our work <span>↘</span></Link><Link className="inline-link" href="#contact">Have a project in mind? <span>↗</span></Link></div></div></div>
       <div className="hero-foot"><Link href="#work">Selected work to explore <span>↓</span></Link><span>Design · Development · Automation</span></div>
     </section>
