@@ -211,3 +211,5 @@ img{max-width:100%}
 .contact-enquiry>p{margin:-8px 0 26px}
 .contact{padding-top:clamp(70px,8vw,100px);padding-bottom:clamp(60px,7vw,90px)}
 @media(max-width:700px){.contact-booking,.contact-enquiry{margin-top:36px}}
+
+.responsive-note{font-size:.875rem!important;line-height:1.6!important;color:#95a1aa!important;margin:10px 0 0!important}
