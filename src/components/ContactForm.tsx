@@ -2,6 +2,12 @@
 
 import { useState } from "react";
 
+declare global {
+  interface Window {
+    umami?: { track: (event: string, data?: Record<string, unknown>) => void };
+  }
+}
+
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xbdblneo";
 
 export default function ContactForm() {
@@ -36,6 +42,7 @@ export default function ContactForm() {
 
           if (response.ok) {
             setStatus("success");
+            window.umami?.track("contact-form-submitted");
           } else {
             setStatus("error");
           }

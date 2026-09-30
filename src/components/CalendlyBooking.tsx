@@ -24,6 +24,7 @@ export default function CalendlyBooking() {
       type="button"
       onClick={() => setShow(true)}
       className="pill pill-solid"
+      data-umami-event="calendly-open"
     >
       Book a Free 15-Min Call <span>↗</span>
     </button>
