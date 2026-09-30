@@ -55,6 +55,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${playfair.variable} ${dmSans.variable}`}
     >
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="76922755-009f-4518-9daf-292bf7df196e"
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"
