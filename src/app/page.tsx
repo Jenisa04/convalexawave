@@ -9,6 +9,7 @@ const projects = [
   { n: "01", sector: "Healthcare", title: "SVKM Physiotherapy Clinic", description: "A welcoming introduction to care through every stage of life. Services, treatment facilities, and ways to get in touch come together in a clear, patient-focused website.", url: "https://www.svkmphysioclinic.com/", image: "/assets/cw-physio-project.jpg", alt: "SVKM Physiotherapy Clinic homepage", label: "SVKM Physiotherapy Clinic", cls: "preview-physio" },
   { n: "02", sector: "Education", title: "Smt. Alka Desai College of Nursing", description: "Helping prospective students and families explore courses, campus life, and admissions through one coherent institutional website.", url: "https://www.svkmalkadesainursing.com/", image: "/assets/cw-nursing-project.jpg", alt: "Smt. Alka Desai College of Nursing homepage", label: "Education & healthcare", cls: "preview-nursing" },
   { n: "03", sector: "Personal brand", title: "Bhupeshbhai Hai Na", description: "A personal story told through people, purpose, and community. An expressive website with English, Hindi, and Marathi language options.", url: "https://www.bhupeshbhaihaina.com/", image: "/assets/cw-personal-project.jpg", alt: "Bhupeshbhai Hai Na homepage", label: "Personal identity", cls: "preview-personal" },
+  { n: "04", sector: "School", title: "C.N.M. & N.D. Parekh ICSE School", description: "A bright, confident home for a school with over 25 years of learning behind it. Academics, sports, campus life, and admissions are organised so families can explore with ease and apply with confidence.", url: "https://www.cnms.ac.in/", image: "/assets/cw-cnms-project.jpg", alt: "C.N.M. & N.D. Parekh ICSE School homepage", label: "School & admissions", cls: "preview-cnms" },
 ];
 
 const services = [
@@ -29,7 +30,8 @@ function Preview({ project }: { project: (typeof projects)[number] }) {
 }
 
 export default function Home() {
-  const [featured, ...secondary] = projects;
+  const [featured, second, third, fourth] = projects;
+  const secondary = [second, third];
   return <>
     <HomeMotion />
     <a className="skip-link" href="#main-content">Skip to content</a><div className="progress" aria-hidden="true"><span /></div><div id="main-content" tabIndex={-1} />
@@ -44,6 +46,7 @@ export default function Home() {
     <section className="work" id="work"><div className="work-heading section-pad reveal"><div><span className="section-label">01 / Selected work</span><h2>Considered work.<br /><em>Out in the world.</em></h2></div><p>Explore selected projects across healthcare, education, and personal identity—each shaped around a distinct audience and purpose.</p></div>
       <article className="work-feature reveal"><Preview project={featured} /><div className="work-info"><div className="work-meta"><span>{featured.n} / {featured.sector}</span><span className="status live">Live website</span></div><h3>{featured.title}</h3><p>{featured.description}</p><p className="responsive-note">Fully responsive across phones, tablets and desktops.</p><Credit /><a className="inline-link project-link" href={featured.url} target="_blank" rel="noopener noreferrer" data-umami-event="project-link-click" data-umami-event-project={featured.title}>Visit the live website <span>↗</span></a></div></article>
       <div className="work-pair">{secondary.map(project => <article className="work-card reveal" key={project.title}><Preview project={project} /><div className="work-meta"><span>{project.n} / {project.sector}</span><span className="status live">Live website</span></div><h3>{project.title}</h3><p>{project.description}</p><p className="responsive-note">Fully responsive across phones, tablets and desktops.</p><Credit /><a className="inline-link project-link" href={project.url} target="_blank" rel="noopener noreferrer" data-umami-event="project-link-click" data-umami-event-project={project.title}>Visit the live website <span>↗</span></a></article>)}</div>
+      <article className="work-feature work-feature-extra reveal"><Preview project={fourth} /><div className="work-info"><div className="work-meta"><span>{fourth.n} / {fourth.sector}</span><span className="status live">Live website</span></div><h3>{fourth.title}</h3><p>{fourth.description}</p><p className="responsive-note">Fully responsive across phones, tablets and desktops.</p><a className="inline-link project-link" href={fourth.url} target="_blank" rel="noopener noreferrer" data-umami-event="project-link-click" data-umami-event-project={fourth.title}>Visit the live website <span>↗</span></a></div></article>
       <div className="work-next section-pad reveal"><p>Your business has its own story.<br /><strong>Let’s give it the right presence.</strong></p><Link className="pill pill-outline" href="#contact" data-umami-event="work-discuss-website">Discuss your website <span>↗</span></Link></div>
     </section>
 

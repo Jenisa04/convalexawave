@@ -213,3 +213,5 @@ img{max-width:100%}
 @media(max-width:700px){.contact-booking,.contact-enquiry{margin-top:36px}}
 
 .responsive-note{font-size:.875rem!important;line-height:1.6!important;color:#95a1aa!important;margin:10px 0 0!important}
+
+.preview-cnms{background:#1b2d4f}.work-pair+.work-feature-extra{margin-top:clamp(60px,8vw,115px)}
