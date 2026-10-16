@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-const CALENDLY_URL = "https://calendly.com/jenisasheth/15-min-meeting?hide_gdpr_banner=1";
+const CALENDLY_URL = "https://calendly.com/jenisasheth/30-min-meeting?hide_gdpr_banner=1";
 
 export default function CalendlyEmbed() {
   const containerRef = useRef<HTMLDivElement>(null);
