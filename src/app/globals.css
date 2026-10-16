@@ -215,3 +215,10 @@ img{max-width:100%}
 .responsive-note{font-size:.875rem!important;line-height:1.6!important;color:#95a1aa!important;margin:10px 0 0!important}
 
 .preview-cnms{background:#1b2d4f}.work-pair+.work-feature-extra{margin-top:clamp(60px,8vw,115px)}
+
+.founder-portrait{margin:0;max-width:440px;width:100%}
+.founder-portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;border-radius:6px;border:1px solid rgba(226,223,208,.15);box-shadow:0 24px 60px #0006}
+.founder-portrait figcaption{margin-top:18px;display:flex;flex-direction:column;gap:4px}
+.founder-portrait strong{font:600 .95rem var(--display);letter-spacing:.16em;color:#f7f6f2}
+.founder-portrait span{font:italic 400 1.15rem var(--serif);color:var(--amber)}
+@media(max-width:1000px){.founder-portrait{max-width:360px}}
