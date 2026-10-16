@@ -230,3 +230,4 @@ img{max-width:100%}
 .contact-details a:hover{color:#ead5b9;text-decoration-color:#dcba92}
 
 .founder-bio p{margin:0 0 22px}.founder-bio h2 em{color:var(--amber)}.founder-bio .founder-tagline{margin:34px 0 0;padding-top:26px;border-top:1px solid rgba(226,223,208,.14);color:#d6dde3;font-size:1.05rem}
+.founder-bio h2 em{font-style:normal;letter-spacing:-.03em}
