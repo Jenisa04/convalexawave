@@ -222,3 +222,9 @@ img{max-width:100%}
 .founder-portrait strong{font:600 .95rem var(--display);letter-spacing:.16em;color:#f7f6f2}
 .founder-portrait span{font:italic 400 1.15rem var(--serif);color:var(--amber)}
 @media(max-width:1000px){.founder-portrait{max-width:360px}}
+
+.contact-details{list-style:none;margin:36px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px 48px}
+.contact-details li{display:flex;flex-direction:column;gap:6px}
+.contact-details span{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#aab5bd}
+.contact-details a{font-size:1.15rem;color:#f7f6f2;text-decoration:underline;text-decoration-color:rgba(220,186,146,.45);text-underline-offset:5px;transition:color .25s,text-decoration-color .25s;overflow-wrap:anywhere}
+.contact-details a:hover{color:#ead5b9;text-decoration-color:#dcba92}

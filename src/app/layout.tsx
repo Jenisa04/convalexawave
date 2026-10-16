@@ -73,7 +73,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               url: "https://www.convalexawave.com",
               description:
                 "Design and automation studio building websites, AI chatbots and connected workflows.",
-              email: "hello@convalexawave.com",
+              email: "jenisa@convalexawave.com",
+              telephone: "+91 9152223657",
             }),
           }}
         />
