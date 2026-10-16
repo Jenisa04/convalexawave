@@ -228,3 +228,5 @@ img{max-width:100%}
 .contact-details span{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#aab5bd}
 .contact-details a{font-size:1.15rem;color:#f7f6f2;text-decoration:underline;text-decoration-color:rgba(220,186,146,.45);text-underline-offset:5px;transition:color .25s,text-decoration-color .25s;overflow-wrap:anywhere}
 .contact-details a:hover{color:#ead5b9;text-decoration-color:#dcba92}
+
+.founder-bio p{margin:0 0 22px}.founder-bio h2 em{color:var(--amber)}.founder-bio .founder-tagline{margin:34px 0 0;padding-top:26px;border-top:1px solid rgba(226,223,208,.14);color:#d6dde3;font-size:1.05rem}
